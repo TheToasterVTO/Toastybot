@@ -2,6 +2,7 @@
 using Toastybot.commands;
 using Toastybot.config;
 using Discord;
+
 namespace Toastybot
 {
     public class ToastyBot
@@ -17,9 +18,12 @@ namespace Toastybot
             Client.Log += Log;
             await Client.LoginAsync(TokenType.Bot, jsonReader.token);
             await Client.StartAsync();
-            await Task.Delay(-1);
-        }
 
+            Client.Ready += OnClient_Ready;
+
+            await Task.Delay(-1);  
+        }
+        
         private static Task Log(LogMessage msg)
         {
             Console.WriteLine(msg.ToString());
@@ -63,14 +67,11 @@ namespace Toastybot
         // //         await sender.SendMessageAsync(await sender.GetChannelAsync(1281589744567975989),embed:message);
         // //     }
         // // }
-        // private static async Task OnClient_Ready(DiscordClient sender, ReadyEventArgs e)
-        // {
-        //     var message = new DiscordMessageBuilder
-        //     {
-        //         Content = "✅ Bot has logged in!"
-        //     };
-        //     var user = await sender.GetUserAsync(409060256413384713);
-        //     user.SendMessageAsync(message);
-        // }
+        private static async Task OnClient_Ready()
+        {
+           var user = await Client.GetUserAsync(409060256413384713);
+
+            await user.SendMessageAsync("✅ Bot has logged in!");
+        }
     }
 }
