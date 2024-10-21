@@ -16,6 +16,8 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="DemoFile" Version="0.22.3" />
     <PackageReference Include="DemoFile.Game.Cs" Version="0.22.3" />
+    <PackageReference Include="SteamKit2" Version="2.5.0" />
+    <PackageReference Include="SteamKit2.CSGO" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
       <Content Include="Image\**">
